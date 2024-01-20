@@ -41,12 +41,8 @@ import RoundTable from '@/components/RoundTable.vue';
     }
 
     const changeTimerButtonTitle = (newValue) => {
-        if (!newValue) {
-            startButton.value = countdownIsRunning.value === true ? "Stop" : "Start"
-            return
-        }
-        startButton.value = newValue
-    }
+        startButton.value = newValue || (countdownIsRunning.value ? "Stop" : "Start");
+    };
 
     const resetTimer = () => {
         countdownIsRunning.value = false
