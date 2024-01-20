@@ -7,9 +7,6 @@
             <TimerButton @toggleButton="toggleButton" :title="startButton" />
             <ResetButton @resetTimer="resetTimer" />
         </div>
-        <div>
-           <RoundTable />
-        </div>
     </div>
 </template>
 
@@ -17,7 +14,6 @@
 import { ref, watch, computed } from 'vue';
 import TimerButton from '@/components/TimerButton.vue';
 import ResetButton from '@/components/ResetButton.vue';
-import RoundTable from '@/components/RoundTable.vue';
 
     let startButton = ref('Start')
     let timeleft = ref(300)
