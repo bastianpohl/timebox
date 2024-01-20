@@ -34,18 +34,22 @@ import RoundTable from '@/components/RoundTable.vue';
 
     const toggleButton = () => {
         // toggle Running State 
-        countdownIsRunning.value = !countdownIsRunning.value
+        changeCountdownState()
 
         if (countdownIsRunning.value === true) { countdown = setInterval(counter, 1000) }
         if (countdownIsRunning.value === false) { stopCountdown() }
     }
 
     const changeTimerButtonTitle = (newValue) => {
-        startButton.value = newValue || (countdownIsRunning.value ? "Stop" : "Start");
-    };
+        startButton.value = newValue || (countdownIsRunning.value ? "Stop" : "Start")
+    }
+
+    const changeCountdownState = (newValue) => {
+        countdownIsRunning.value = newValue || !countdownIsRunning.value
+    }
 
     const resetTimer = () => {
-        countdownIsRunning.value = false
+        countdownIsRunning(false)
         stopCountdown()
         timeleft.value = 300
     }
