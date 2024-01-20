@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="timer">
-            {{display.minuten}} : {{display.sekunden}}
+            {{display.minutes}} : {{display.sekunden}}
         </div>
         <div>
             <TimerButton @toggleButton="toggleButton" :title="startButton" />
@@ -52,24 +52,23 @@ import ResetButton from '@/components/ResetButton.vue';
     }
  
     watch(timeleft, (remaining) => {
-        remaining === 0 && stopCountdown();
+        remaining === 0 && stopCountdown()
     })
 
     watch(countdownIsRunning, (newValue) => {
-        changeTimerButtonTitle(newValue ? "Stop" : "Start");
+        changeTimerButtonTitle(newValue ? "Stop" : "Start")
     })
 
     const display = computed(() => {
-        var minuten = Math.floor(timeleft.value / 60);
-        var restlicheSekunden = timeleft.value % 60;
-
-        var formatierteMinuten = minuten.toString().padStart(2, '0');
-        var formatierteSekunden = restlicheSekunden.toString().padStart(2, '0');
+        var minutes = Math.floor(timeleft.value / 60)
+        var remainingSeconds = timeleft.value % 60
+        var formattedminutes = minutes.toString().padStart(2, '0')
+        var formattedSeconds = remainingSeconds.toString().padStart(2, '0')
 
         return {
-            minuten: formatierteMinuten,
-            sekunden: formatierteSekunden
-        }; 
+            minutes: formattedminutes,
+            seconds: formattedSeconds
+        } 
     })
 </script>
 
