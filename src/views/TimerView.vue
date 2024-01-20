@@ -38,7 +38,7 @@ import ResetButton from '@/components/ResetButton.vue';
     }
 
     const changeTimerButtonTitle = (newValue) => {
-        startButton.value = newValue || (countdownIsRunning.value ? "Stop" : "Start")
+        startButton.value = newValue
     }
 
     const changeCountdownState = (newValue) => {
