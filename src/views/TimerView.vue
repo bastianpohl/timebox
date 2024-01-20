@@ -45,7 +45,7 @@ import ResetButton from '@/components/ResetButton.vue';
     }
 
     const resetTimer = () => {
-        countdownIsRunning(false)
+        changeCountdownState(false)
         stopCountdown()
         timeleft.value = 300
     }
