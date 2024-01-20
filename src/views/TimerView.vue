@@ -34,7 +34,6 @@ import ResetButton from '@/components/ResetButton.vue';
 
     const toggleButton = () => {
         changeCountdownState()
-        countdownIsRunning.value ? startCountdown() : stopCountdown()
     }
 
     const changeTimerButtonTitle = (newValue) => {
@@ -47,7 +46,6 @@ import ResetButton from '@/components/ResetButton.vue';
 
     const resetTimer = () => {
         changeCountdownState(false)
-        stopCountdown()
         timeleft.value = 300
     }
  
@@ -57,6 +55,7 @@ import ResetButton from '@/components/ResetButton.vue';
 
     watch(countdownIsRunning, (newValue) => {
         changeTimerButtonTitle(newValue ? "Stop" : "Start")
+        countdownIsRunning.value ? startCountdown() : stopCountdown()
     })
 
     const display = computed(() => {
