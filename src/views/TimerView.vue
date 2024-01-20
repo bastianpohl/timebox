@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="timer">
-            {{display.minutes}} : {{display.sekunden}}
+            {{display.minutes}} : {{display.seconds}}
         </div>
         <div>
             <TimerButton @toggleButton="toggleButton" :title="startButton" />
