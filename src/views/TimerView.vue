@@ -28,12 +28,13 @@ import ResetButton from '@/components/ResetButton.vue';
         clearInterval(countdown)
     }
 
-    const toggleButton = () => {
-        // toggle Running State 
-        changeCountdownState()
+    const startCountdown = () => {
+        countdown = countdown = setInterval(counter, 1000)
+    }
 
-        if (countdownIsRunning.value === true) { countdown = setInterval(counter, 1000) }
-        if (countdownIsRunning.value === false) { stopCountdown() }
+    const toggleButton = () => {
+        changeCountdownState()
+        countdownIsRunning.value ? startCountdown() : stopCountdown()
     }
 
     const changeTimerButtonTitle = (newValue) => {
@@ -51,9 +52,7 @@ import ResetButton from '@/components/ResetButton.vue';
     }
  
     watch(timeleft, (remaining) => {
-        if (remaining === 0) {
-            clearInterval(countdown)
-        }
+        remaining === 0 && stopCountdown();
     })
 
     watch(countdownIsRunning, (newValue) => {
