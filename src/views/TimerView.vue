@@ -5,7 +5,7 @@
         </div>
         <div style="text-align:center;">
             <TimerButton @toggleButton="toggleButton" :title="startButton" />
-            <ResetButton @resetTimer="resetTimer" />
+            <ResetButton @resetTimer="resetTimer" :title="BUTTON.reset"/>
         </div>
     </div>
 </template>
@@ -19,6 +19,11 @@ import ResetButton from '@/components/ResetButton.vue';
     let timeleft = ref(300)
     let countdownIsRunning = ref(false)
     const worker = new Worker("./counter.js")
+    let BUTTON = {
+        "start": "Start",
+        "stop": "Stop",
+        "reset": "Reset" 
+    }
 
     worker.onmessage = (e) => {
         timeleft.value = e.data
@@ -45,7 +50,7 @@ import ResetButton from '@/components/ResetButton.vue';
     }
 
     const changeTimerButtonTitle = () => {
-        startButton.value = getRunningState() ? "Stop" : "Start"
+        startButton.value = getRunningState() ? BUTTON.stop : BUTTON.start
     }
 
     const resetTimer = () => {

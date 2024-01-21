@@ -20,7 +20,6 @@ const startCountdown = () => {
 }
 
 const resetTimer = () => {
-    stopCountdown()
     timeleft = 300
     postMessage(timeleft)
 }
