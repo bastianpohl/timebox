@@ -18,22 +18,26 @@ import ResetButton from '@/components/ResetButton.vue';
     let startButton = ref('Start')
     let timeleft = ref(300)
     let countdownIsRunning = ref(false)
-    var countdown
+    const worker = new Worker("./counter.js")
 
-    const counter = () => { 
-        timeleft.value--
+    worker.onmessage = (e) => {
+        timeleft.value = e.data
     }
 
     const stopCountdown = () => {
-        clearInterval(countdown)
+        worker.postMessage({ "isRunning": false })
     }
 
     const startCountdown = () => {
-        countdown = setInterval(counter, 1000)
+        worker.postMessage({ "isRunning": true })
     }
 
     const toggleButton = () => {
-        changeCountdownState()
+        getRunningState() ? changeCountdownState(false) : changeCountdownState(true)
+    }
+
+    const getRunningState = () => {
+        return countdownIsRunning.value
     }
 
     const changeTimerButtonTitle = (newTitle) => {
@@ -41,12 +45,12 @@ import ResetButton from '@/components/ResetButton.vue';
     }
 
     const changeCountdownState = (newState) => {
-        countdownIsRunning.value = newState || !countdownIsRunning.value
+        countdownIsRunning.value = newState 
     }
 
     const resetTimer = () => {
         changeCountdownState(false)
-        timeleft.value = 300
+        worker.postMessage({"resetTimer": true})
     }
  
     watch(timeleft, (remaining) => {
