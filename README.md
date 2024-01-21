@@ -1,8 +1,8 @@
 # timebox
+timebox is a simple timer app. The timer can run in the background, even when the browser is not active.
 
-timebox ist eine simple Timer App. Der Timer kann im Hintergrund laufen, auch wenn der Browser nicht aktiv ist.
+Design is currently very basic; work to be done
 
-Design ist aktuell sehr basic; work to be done
 ## Recommended IDE Setup
 
 ## Project Setup

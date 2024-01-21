@@ -12,7 +12,7 @@
         02:30
       </td>
     </tr>
-    <tr>
+    <tr v-for="round in rounds" :key="index">
       <td>
         {{round.index}}
       </td>
@@ -24,8 +24,11 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue';
+  import { ref } from 'vue'
+  const props = defineProps(["rounds"])
+  
   const rounds = ref([])
+
 </script>
 
 <style lang="scss" scoped></style>

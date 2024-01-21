@@ -9,3 +9,7 @@
     emit("resetTimer")
   }
 </script>
+
+<style>
+
+</style>

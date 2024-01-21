@@ -1,6 +1,7 @@
 <template>
     <button
         @click="toggleButton"
+        class="button-container button"
     >
         {{props.title}}
     </button>
@@ -16,3 +17,6 @@
     }
 </script>
 
+<style>
+ 
+</style>
