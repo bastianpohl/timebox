@@ -3,7 +3,7 @@
         <div class="timer">
             {{display.minutes}} : {{display.seconds}}
         </div>
-        <div>
+        <div style="text-align:center;">
             <TimerButton @toggleButton="toggleButton" :title="startButton" />
             <ResetButton @resetTimer="resetTimer" />
         </div>
@@ -29,19 +29,19 @@ import ResetButton from '@/components/ResetButton.vue';
     }
 
     const startCountdown = () => {
-        countdown = countdown = setInterval(counter, 1000)
+        countdown = setInterval(counter, 1000)
     }
 
     const toggleButton = () => {
         changeCountdownState()
     }
 
-    const changeTimerButtonTitle = (newValue) => {
-        startButton.value = newValue
+    const changeTimerButtonTitle = (newTitle) => {
+        startButton.value = newTitle
     }
 
-    const changeCountdownState = (newValue) => {
-        countdownIsRunning.value = newValue || !countdownIsRunning.value
+    const changeCountdownState = (newState) => {
+        countdownIsRunning.value = newState || !countdownIsRunning.value
     }
 
     const resetTimer = () => {
@@ -53,24 +53,24 @@ import ResetButton from '@/components/ResetButton.vue';
         remaining === 0 && stopCountdown()
     })
 
-    watch(countdownIsRunning, (newValue) => {
-        changeTimerButtonTitle(newValue ? "Stop" : "Start")
-        countdownIsRunning.value ? startCountdown() : stopCountdown()
+    watch(countdownIsRunning, (isRunning) => {
+        changeTimerButtonTitle(isRunning ? "Stop" : "Start")
+        isRunning ? startCountdown() : stopCountdown()
     })
 
     const display = computed(() => {
         var minutes = Math.floor(timeleft.value / 60)
         var remainingSeconds = timeleft.value % 60
-        var formattedminutes = minutes.toString().padStart(2, '0')
+        var formattedMinutes = minutes.toString().padStart(2, '0')
         var formattedSeconds = remainingSeconds.toString().padStart(2, '0')
 
         return {
-            minutes: formattedminutes,
+            minutes: formattedMinutes,
             seconds: formattedSeconds
         } 
     })
 </script>
 
-<style>
+<style scoped>
 
 </style>
