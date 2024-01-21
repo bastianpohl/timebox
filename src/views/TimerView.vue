@@ -33,23 +33,24 @@ import ResetButton from '@/components/ResetButton.vue';
     }
 
     const toggleButton = () => {
-        getRunningState() ? changeCountdownState(false) : changeCountdownState(true)
+        getRunningState() ? setRunningState(false) : setRunningState(true)
     }
 
     const getRunningState = () => {
         return countdownIsRunning.value
     }
 
+    const setRunningState = (newState) => {
+        countdownIsRunning.value = newState 
+    }
+
+
     const changeTimerButtonTitle = (newTitle) => {
         startButton.value = newTitle
     }
 
-    const changeCountdownState = (newState) => {
-        countdownIsRunning.value = newState 
-    }
-
     const resetTimer = () => {
-        changeCountdownState(false)
+        setRunningState(false)
         worker.postMessage({"resetTimer": true})
     }
  
