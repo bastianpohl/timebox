@@ -2,9 +2,6 @@
 timebox is a simple timer app. The timer can run in the background, even when the browser is not active.
 
 Design is currently very basic; work to be done
-
-## Recommended IDE Setup
-
 ## Project Setup
 
 ```sh
