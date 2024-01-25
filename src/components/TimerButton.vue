@@ -1,13 +1,9 @@
 <template>
-    <button
-        @click="toggleButton"
-        class="button-container button"
-    >
-        {{props.title}}
-    </button>
+    <GenericButton @click="toggleButton" :title="props.title" />
 </template>
 
 <script setup>
+import GenericButton from './GenericButton.vue'
 
     const props = defineProps(['title'])
     const emit = defineEmits(['toggleButton'])
