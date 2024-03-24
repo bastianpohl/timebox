@@ -1,10 +1,11 @@
-export const STATES = {
-    "running": {
-        "buttonText": "Start",
-        "state": true
-        },
-    "stopped": {
-        "buttonText": "Stop",
-        "state": false
-        }   
-};
+const running = {
+  buttonText: 'Stop',
+  state: true
+}
+
+const notRunning = {
+  buttonText: 'Start',
+  state: false
+}
+
+export { running as RUNNING, notRunning as NOT_RUNNING }
