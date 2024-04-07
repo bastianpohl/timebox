@@ -16,12 +16,10 @@ import { RUNNING, NOT_RUNNING } from "../STATES";
 
 const InitialTimeleftt = 300;
 
-let startButton = ref(RUNNING.buttonText);
+let startButton = ref(NOT_RUNNING.buttonText);
 let timeleft = ref(InitialTimeleftt);
 let countdownIsRunning = ref(NOT_RUNNING.state);
 const worker = new Worker("./counter.js");
-
-//let CountdownState = new buffer();
 
 worker.onmessage = (e) => {
   timeleft.value = e.data;
